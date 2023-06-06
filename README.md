@@ -1,2 +1,0 @@
-# LiquorManagement
-Liquor Management System 
