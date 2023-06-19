@@ -9,5 +9,5 @@ public class ProductCatalogueServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProductCatalogueServiceApplication.class, args);
 	}
-
+	
 }
