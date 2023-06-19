@@ -37,7 +37,13 @@ public class ProductController {
 		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/products")	
 		public ResponseEntity<List<Product>> getAllProducts(){
-				List<Product> products =  productCatalogueServiceimpl.getAllProducts();
+				List<Product> products = null;
+				try {
+					products = productCatalogueServiceimpl.getAllProducts();
+				} catch (RecordNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 //				if(products.isEmpty()) {
 //					return ResponseEntity.ok(products);
 //				}else {
@@ -59,9 +65,9 @@ public class ProductController {
 		//return new ResponseEntity<EmployeeEntity>(product,new HttpHeaders(),HttpStatus.Ok);
 	}
 	//Get Products by Category: An API to fetch a list of products belonging to a particular category or type.
-	@RequestMapping(value="/products/category/{categoryId}")
-	public List<Product> getProductByCategory(@PathVariable String categoryId){
-		return null;
+	@RequestMapping(value="/products/category/{category}")
+	public List<Product> getProductByCategory(@PathVariable String category) throws RecordNotFoundException{
+		return productCatalogueServiceimpl.getProductByCategory(category);
 	}
 	
 	//Search Products: An API that allows users to search for products based on keywords, filters, or specific criteria.
@@ -85,7 +91,7 @@ public class ProductController {
 		//return new ResponseEntity<Product>(updatedProduct,new HttpHeaders(), HttpStatus.OK);
 	}
 	//Delete Product: An API to remove a product from the catalog based on its unique identifier.
-	@RequestMapping(value="/sproducts/{productId}",method = RequestMethod.DELETE)
+	@RequestMapping(value="/products/{productId}",method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteProduct(@PathVariable Long productId) throws RecordNotFoundException{
 		productCatalogueServiceimpl.deleteProductById(productId);
 		  return ResponseEntity.ok("Product deleted successfully");	

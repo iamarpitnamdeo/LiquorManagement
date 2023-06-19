@@ -8,7 +8,7 @@ import com.liquormanagement.pcs.model.Product;
 import com.liquormanagement.pcs.model.Review;
 
 public interface ProductCatalogueService {
-	List<Product> getAllProducts();
+	List<Product> getAllProducts() throws RecordNotFoundException;
 	Product addProduct(Product product);
 	Product updateProduct(Product product) throws RecordNotFoundException;
 	Product getProductById(Long id) throws RecordNotFoundException;
@@ -16,4 +16,5 @@ public interface ProductCatalogueService {
 	List<Review> getProductReviews(Long productId);
 	Review addProductReview(String productId, Review review);
 	Inventory getProductInventory(String productId);
+	List<Product> getProductByCategory(String category) throws RecordNotFoundException;
 }

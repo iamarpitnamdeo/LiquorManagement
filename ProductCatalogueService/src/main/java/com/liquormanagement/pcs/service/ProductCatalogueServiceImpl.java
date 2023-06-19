@@ -3,6 +3,7 @@ package com.liquormanagement.pcs.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import jakarta.annotation.PostConstruct;
 
@@ -91,7 +92,7 @@ public class ProductCatalogueServiceImpl implements ProductCatalogueService{
 	}
 	*/
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> getAllProducts() throws RecordNotFoundException{
 		
 		List<Product> productsList= productCatalogueRepository.findAll();
 		
@@ -149,6 +150,31 @@ public class ProductCatalogueServiceImpl implements ProductCatalogueService{
 	public Inventory getProductInventory(String productId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Product> getProductByCategory(String category) throws RecordNotFoundException{
+		
+		Long categoryId = productCategoryRepository.findCategoryIdByName(category);
+		
+		List<Product> productsList= productCatalogueRepository.findAll();
+		
+		 /*Optional<Product> products = productsList.stream()
+		            .filter(p -> p.getCategory().getId().equals(categoryId))
+		            .findFirst();*/
+		 
+		    List<Product> filteredProducts = productsList.stream()
+		            .filter(product -> product.getCategory().getId().equals(categoryId))
+		            .collect(Collectors.toList());
+		    
+		 /*List<Category> categoryList = productCategoryRepository.findAll();
+	        String categoryName = "My Category";
+
+	        List<Category> filteredCategories = categoryList.stream()
+	                .filter(category -> category.getName().equals(categoryName))
+	                .collect(Collectors.toList());
+	        */
+			return filteredProducts;
 	}
 	
 	

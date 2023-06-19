@@ -94,6 +94,14 @@ public class Product {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
+
+
+
+	public Category getCategory() {
+		// TODO Auto-generated method stub
+		return category;
+	}
 	
 	
 }
