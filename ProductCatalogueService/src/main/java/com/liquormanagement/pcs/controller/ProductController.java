@@ -34,15 +34,17 @@ public class ProductController {
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	//Get All products
+		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/products")	
 		public ResponseEntity<List<Product>> getAllProducts(){
 				List<Product> products =  productCatalogueServiceimpl.getAllProducts();
-				if(products.isEmpty()) {
-					return ResponseEntity.ok(products);
-				}else {
-					return ResponseEntity.notFound().build();
-				}
+//				if(products.isEmpty()) {
+//					return ResponseEntity.ok(products);
+//				}else {
+//					return ResponseEntity.notFound().build();
+//				}
 			//	return new ResponseEntity<List<Product>>(products,new HttpHeaders(),HttpStatus.OK);
+				return new ResponseEntity<>(products, HttpStatus.OK);
 			}
 	
 	//Get Product by ID: An API to retrieve detailed information about a specific product based on its unique identifier.
@@ -65,13 +67,13 @@ public class ProductController {
 	//Search Products: An API that allows users to search for products based on keywords, filters, or specific criteria.
 	
 	//Add Product: An API to add a new product to the catalog. This API would typically accept product details as input and generate a unique identifier for the new product.
-	@RequestMapping(value="products",method=RequestMethod.POST)
+	@RequestMapping(value="/products",method=RequestMethod.POST)
 	public ResponseEntity<Product> addProduct(@RequestBody Product product){
 		Product addedProduct =  productCatalogueServiceimpl.addProduct(product);
 		return ResponseEntity.created(URI.create("/products"+addedProduct.getId())).body(addedProduct);
 	}
 	//Update Product: An API to update the details of an existing product in the catalog. This API would typically accept the product ID and the updated information as input.
-	@RequestMapping(value="products",method=RequestMethod.PUT)
+	@RequestMapping(value="/products",method=RequestMethod.PUT)
 	public ResponseEntity<Product> updateProduct(@PathVariable Long id,@RequestBody Product product) throws RecordNotFoundException{
 		Product updatedProduct = productCatalogueServiceimpl.updateProduct(product);
 		if(updatedProduct!=null) {
@@ -83,7 +85,7 @@ public class ProductController {
 		//return new ResponseEntity<Product>(updatedProduct,new HttpHeaders(), HttpStatus.OK);
 	}
 	//Delete Product: An API to remove a product from the catalog based on its unique identifier.
-	@RequestMapping(value="products/{productId}",method = RequestMethod.DELETE)
+	@RequestMapping(value="/sproducts/{productId}",method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteProduct(@PathVariable Long productId) throws RecordNotFoundException{
 		productCatalogueServiceimpl.deleteProductById(productId);
 		  return ResponseEntity.ok("Product deleted successfully");	
