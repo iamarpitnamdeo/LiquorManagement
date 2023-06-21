@@ -10,4 +10,5 @@ public interface ProductCategoryRepository extends JpaRepository<Category,Long>{
 
 	@Query("SELECT c.id FROM Category c WHERE c.name = :name")
     Long findCategoryIdByName(@Param("name") String name);
+
 }

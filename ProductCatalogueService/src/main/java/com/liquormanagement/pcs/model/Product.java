@@ -33,8 +33,6 @@ public class Product {
 	}
 
 
-
-
 	public Product(Long id, String name, String description, Double price, String brand, Category category) {
 		super();
 		this.id = id;
@@ -95,7 +93,7 @@ public class Product {
 		this.brand = brand;
 	}
 
-
+	
 
 
 	public Category getCategory() {
@@ -103,5 +101,8 @@ public class Product {
 		return category;
 	}
 	
+	public void setCategory(Category category) {
+	    this.category = category;
+	}
 	
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product Catalogue Management Service</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+ <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+	
+</head>
+<body>
+<!-- <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		Brand
+		<a class="navbar-brand" href="#">Product Catalogue Management</a>
+
+		Toggler/collapsibe Button
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		Navbar links
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/liquors}">All Liquors</a></li>
+
+			</ul>
+		</div>
+	</nav> -->
+	
+	<!-- <div>
+		<h2>List of Products</h2>
+		<tr>
+			<div align="left">
+				<h3>
+					<a th:href="@{/liquors/new}">Add new</a>
+			</div>
+
+		</tr>
+
+		<div class="col-sm-8" align="center">
+			<div class="panel-body" align="center">
+
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Category</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product: ${liquors}">
+							<td th:text="${product.name}"></td>
+							<td th:text="${product.description}"></td>
+							<td th:text="${product.price}"></td>
+							<td th:text="${product.category.name}"></td>
+							<td><a
+								th:href="@{/liquors/edit/{productId}(productId=${product.id})}"
+								class="btn btn-primary">Update</a> <a
+								th:href="@{/liquors/{productId}(productId=${product.id})}"
+								class="btn btn-danger">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		</tr>
+
+		</tbody>
+		</table>
+		<div>
+ -->
+<div class="container">
+		<!-- <div class="row"> -->
+		<h2>List of Products</h2>
+		
+		<tr>
+			<div align="left">
+				<h3>
+					<a th:href="@{/liquors/new}">Add new</a>
+			</div>
+
+		</tr>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Category</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "product: ${liquors}" >
+					<td th:text="${product.name}"></td>
+					<td th:text="${product.description}"></td>
+					<td th:text="${product.price}"></td>
+					<td th:text="${product.category.name}"></td>
+					<td>
+						<a th:href="@{/liquors/edit/{productId}(productId=${product.id})}" 
+						class = "btn btn-primary">Update</a>
+						<a th:href="@{/liquors/{productId}(productId=${product.id})}" 
+						class = "btn btn-danger">Delete</a>
+					</td>	
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

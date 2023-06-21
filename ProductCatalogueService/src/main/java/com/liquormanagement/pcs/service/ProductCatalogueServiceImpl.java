@@ -176,6 +176,12 @@ public class ProductCatalogueServiceImpl implements ProductCatalogueService{
 	        */
 			return filteredProducts;
 	}
+
+	//update method for tymeleaf controller 
+	public void updateStudent(Product existingProduct) {
+		// TODO Auto-generated method stub
+		productCatalogueRepository.save(existingProduct);
+	}
 	
 	
 }

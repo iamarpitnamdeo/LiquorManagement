@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Product Catalogue Management</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<!-- <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		Brand
+		<a class="navbar-brand" href="#">Product Catalogue Management</a>
+
+		Toggler/collapsibe Button
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		Navbar links
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/liquors}">All Liquors</a></li>
+
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br> -->
+	<div align="center">
+		<h1>Add New Product</h1>
+		<br />
+		<div class="col-sm-4">
+			<form action="#" th:action="@{/liquors}" th:object="${product}"
+				method="post">
+
+
+				<div align="left">
+					<tr>
+						<label class="form-label">Product Name</label>
+						<td><input type="text" th:field="*{name}" name="name"
+							class="form-control" placeholder="Enter Product Name" /></td>
+					</tr>
+				</div>
+				<div align="left">
+					<tr>
+						<label class="form-label">Description</label>
+						<td><input type="text" th:field="*{description}"
+							class="form-control" name="description"
+							placeholder="Enter Product Name" /></td>
+					</tr>
+				</div>
+				<div align="left">
+					<tr>
+						<label class="form-label">Price</label>
+						<td><input type="text" th:field="*{price}"
+							class="form-control" name="price"
+							placeholder="Enter Product Price" /></td>
+					</tr>
+				</div>
+				<div align="left">
+					<tr>
+						<label class="form-label">Brand</label>
+						<td><input type="text" th:field="*{brand}"
+							class="form-control" name="brand"
+							placeholder="Enter Product Brand" /></td>
+					</tr>
+				</div>
+				<div align="left">
+					<tr>
+						<label for="category" class="form-label">Category</label>
+						<td><select id="category" name="category.id"
+							th:field="*{category.id}" class="form-control" required>
+								<option th:each="category : ${categories}"
+									th:value="${category.id}" th:text="${category.name}"></option>
+						</select></td>
+					</tr>
+				</div>
+
+
+				<br>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-info">Save</button>
+					</td>
+				</tr>
+
+			</form>
+			<!-- <div class="container">
+				<div class="row">
+					<div
+						class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+						<h1 class="text-center">Add New Product</h1>
+						<div class="card-body">
+							<form th:action="@{/liquors}" th:object="${product}"
+								method="POST">
+								<div class="form-group">
+									<label>Product Name</label> <input type="text" name="name"
+										th:field="*{name}" class="form-control"
+										placeholder="Enter Product Name" />
+								</div>
+								<div class="form-group">
+									<label>Description</label> <input type="text"
+										name="description" th:field="*{description}"
+										class="form-control" placeholder="Enter Product Description" />
+								</div>
+								<div class="form-group">
+									<label>Price</label> <input type="text" name="price"
+										th:field="*{price}" class="form-control"
+										placeholder="Enter Product Price" />
+								</div>
+								<div class="form-group">
+									<label>Brand</label> <input type="text" name="price"
+										th:field="*{brand}" class="form-control"
+										placeholder="Enter Product Price" />
+								</div>
+								<div>
+									<label for="category">Category:</label> <select id="category"
+										name="category.id" th:field="*{category.id}" required>
+										<option th:each="category : ${categories}"
+											th:value="${category.id}" th:text="${category.name}"></option>
+									</select>
+								</div>
+								<div>
+							<label for="category">Category:</label> <select id="category"
+								name="category.id" th:field="*{category.id}" required>
+								<option value="1">Category 1</option>
+								<option value="2">Category 2</option>
+								<option value="3">Category 3</option>
+								<option value="4">Category 4</option>
+							</select>
+						</div>
+								<div class="box-footer">
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div> -->
+</body>
+</html>
