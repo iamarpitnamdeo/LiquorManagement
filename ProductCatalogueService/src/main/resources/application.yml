@@ -1,0 +1,31 @@
+server:
+  port:0
+spring:
+  jpa:
+    hibernate:
+      ddl-auto:create
+    datasource:
+      url: jdbc:h2:mem:testdb
+      username: sa
+      driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+  application:
+    name: ProductCatalogue-Service
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+pivotal:
+  shopmanagementservice:
+    name: ShopManagement-Service
+  productcatalogueservice:
+    name: ProductCatalogue-Service

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All products of the shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<tr>
+    <div align="left">
+        <a th:href="@{/shops/new}">Add new</a>
+        <a th:href="@{/shops}">All Shops</a>
+    </div>
+</tr>
+<h1>All products of the shop</h1>
+
+<div th:object="${shop}">
+Shop Name: <span th:text="${#object.shopName}"></span>
+Shop State: <span th:text="${#object.state}"></span>
+Shop City:    <span th:text="${#object.city}"></span>
+Shop Street:     <span th:text="${#object.street}"></span>
+Shop ZipCode:    <span th:text="${#object.zipCode}"></span>
+</div>
+<p>Products Available at our shop</p>
+<table border="1">
+    <tr><th>Review Id</th><th>Cafe Id</th><th>Cafe Ratings</th><th>Cafe Remarks</th></tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.category.name}"></td>
+    </tr>
+</table>
+</body>
+</html>

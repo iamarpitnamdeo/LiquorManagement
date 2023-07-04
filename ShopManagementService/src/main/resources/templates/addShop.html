@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Management Service</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body  align="center">
+<tr>
+    <div align="left">
+        <a th:href="@{/shops/new}">Add new</a>
+        <a th:href="@{/shops}">All Shops</a>
+    </div>
+</tr>
+
+<h1>Add new shop</h1>
+<br />
+<div class="col-sm-4">
+    <form action="#" th:action="@{/shops}" th:object="${shop}"
+          method="post">
+
+
+        <div align="left">
+            <tr>
+                <label class="form-label">Shop Name</label>
+                <td><input type="text" th:field="*{shopName}" name="name"
+                           class="form-control" placeholder="Enter Shop Name" /></td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label class="form-label">State</label>
+                <td><input type="text" th:field="*{state}"
+                           class="form-control" name="description"
+                           placeholder="Select Shop State" /></td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label class="form-label">City</label>
+                <td><input type="text" th:field="*{city}"
+                           class="form-control" name="price"
+                           placeholder="Select shop city" /></td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label class="form-label">Street</label>
+                <td><input type="text" th:field="*{street}"
+                           class="form-control" name="brand"
+                           placeholder="Enter Shop Street" /></td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label class="form-label">Zipcode</label>
+                <td><input type="text" th:field="*{zipCode}"
+                           class="form-control" name="brand"
+                           placeholder="Enter zip code" /></td>
+            </tr>
+        </div>
+
+
+        <br>
+        <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info">Save</button>
+            </td>
+        </tr>
+
+    </form>
+
+</body>
+</html>

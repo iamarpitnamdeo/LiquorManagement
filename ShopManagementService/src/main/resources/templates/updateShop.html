@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Management Service</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+
+<div class="container">
+    <tr>
+        <div align="left">
+            <a th:href="@{/shops/new}">Add new</a>
+            <a th:href="@{/shops}">All Shops</a>
+        </div>
+    </tr>
+    <div class="row">
+        <div
+                class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update Shop</h1>
+            <div class="card-body">
+                <form th:action="@{/shops/{shopId}(shopId=${shop.shopId})}"
+                      th:object="${shop}" method="POST">
+                    <div class="form-group">
+                        <label>Shop Name</label> <input type="text" name="name"
+                                                           th:field="*{shopName}" class="form-control"
+                                                           placeholder="Enter Shop Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>State</label> <input type="text"
+                                                                  name="description" th:field="*{state}"
+                                                                  class="form-control" placeholder="Enter Product Description" />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label> <input type="text" name="city"
+                                                            th:field="*{city}" class="form-control"
+                                                            placeholder="Enter City" />
+                    </div>
+                    <div class="form-group">
+                        <label>Street</label> <input type="text" name="street"
+                                                   th:field="*{street}" class="form-control"
+                                                   placeholder="Enter Street" />
+
+                    </div>
+                    <div class="form-group">
+                        <label>Zipcode</label> <input type="text" name="zipCode"
+                                                     th:field="*{zipCode}" class="form-control"
+                                                     placeholder="Enter Zipcode" />
+
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
