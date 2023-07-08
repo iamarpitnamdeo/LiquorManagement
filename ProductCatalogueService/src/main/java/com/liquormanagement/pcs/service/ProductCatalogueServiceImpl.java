@@ -178,10 +178,10 @@ public class ProductCatalogueServiceImpl implements ProductCatalogueService{
 	}
 
 	//update method for tymeleaf controller 
-	public void updateStudent(Product existingProduct) {
-		// TODO Auto-generated method stub
-		productCatalogueRepository.save(existingProduct);
-	}
+//	public void updateStudent(Product existingProduct) {
+//		// TODO Auto-generated method stub
+//		productCatalogueRepository.save(existingProduct);
+//	}
 	
 	
 }

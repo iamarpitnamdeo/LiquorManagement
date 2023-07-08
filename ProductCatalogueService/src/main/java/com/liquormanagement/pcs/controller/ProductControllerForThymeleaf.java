@@ -90,7 +90,7 @@ public class ProductControllerForThymeleaf {
 		existingProduct.setDescription(product.getDescription());
 		existingProduct.setPrice(product.getPrice());
 		// save updated student object
-		productCatalogueServiceimpl.updateStudent(existingProduct);
+		productCatalogueServiceimpl.updateProduct(existingProduct);
 		// redirect to /students page
 
 		return "redirect:/liquors";
